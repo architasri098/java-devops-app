@@ -28,3 +28,14 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: archisrivastava/java-hello-app:latest
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ec2-user
+          key: ${{ secrets.EC2_KEY }}
+          script: |
+            docker pull archisrivastava/java-hello-app:latest
+            docker stop java-hello || true
+            docker rm java-hello || true
+            docker run --name java-hello archisrivastava/java-hello-app:latest
