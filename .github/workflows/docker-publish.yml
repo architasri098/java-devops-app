@@ -2,7 +2,7 @@ name: Build and Push to Docker Hub
 
 on:
   push:
-    branches: [master]
+    branches: [main]
 
 jobs:
   docker:
@@ -26,4 +26,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: YOUR_DOCKERHUB_USERNAME/java-hello-app:latest
+        tags: archisrivastava/java-hello-app:latest
