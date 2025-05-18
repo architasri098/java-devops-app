@@ -24,6 +24,7 @@ jobs:
     - name: Build and Push Docker image
       uses: docker/build-push-action@v5
       with:
-        context: .
-        push: true
-        tags: archisrivastava/java-hello-app:latest
+  context: .
+  platforms: linux/amd64,linux/arm64
+  push: true
+  tags: archisrivastava/java-hello-app:latest
